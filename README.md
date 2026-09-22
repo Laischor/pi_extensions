@@ -1,6 +1,6 @@
 # Pi Extensions
 
-A [Pi](https://pi.dev) package with three extensions. They load automatically once the package is installed — no files to copy.
+A [Pi](https://pi.dev) package with four extensions. They load automatically once the package is installed — no files to copy.
 
 ## Installation
 
@@ -23,6 +23,7 @@ pi_extensions/
 ├── package.json          # pi manifest (extensions/)
 ├── extensions/
 │   ├── exit-command.ts
+│   ├── clear-command.ts
 │   ├── remember-last-model.ts
 │   └── model-specific-context.ts
 ├── README.md
@@ -32,6 +33,12 @@ pi_extensions/
 ## exit-command
 
 Adds `/exit` as an alias for pi's built-in `/quit`. Other coding agents use `/exit`; pi only ships `/quit`. Both trigger the same clean shutdown.
+
+---
+
+## clear-command
+
+Adds `/clear` as an alias for pi's built-in `/new`. Other coding agents use `/clear`; pi names the fresh-session command `/new`. Both start a new session the same way.
 
 ---
 
