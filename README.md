@@ -1,6 +1,6 @@
 # Pi Extensions
 
-A [Pi](https://pi.dev) package with four extensions. They load automatically once the package is installed — no files to copy.
+A [Pi](https://pi.dev) package with five extensions. They load automatically once the package is installed — no files to copy.
 
 ## Installation
 
@@ -25,7 +25,8 @@ pi_extensions/
 │   ├── exit-command.ts
 │   ├── clear-command.ts
 │   ├── remember-last-model.ts
-│   └── model-specific-context.ts
+│   ├── model-specific-context.ts
+│   └── vim-select-keys.ts
 ├── README.md
 └── LICENSE
 ```
@@ -103,3 +104,29 @@ You are working with Claude Sonnet 4. Always:
 The extension hooks into:
 - `model_select` - Loads context file when model changes
 - `before_agent_start` - Injects context into system prompt for each turn
+
+---
+
+## vim-select-keys
+
+Adds vim/readline navigation to pi's selection dialogs: **Ctrl+N** moves to the next item and **Ctrl+P** to the previous one, in addition to the arrow keys.
+
+This applies to every select list that uses the shared keybindings, including:
+- the model selector (`/model`, Ctrl+L)
+- the session picker (`/resume`)
+- the session tree (`/tree`)
+- `ctx.ui.select()` prompts from extensions
+- tool/permission confirmations and other selection dialogs
+
+### Why not just keybindings.json?
+
+You can get the same result with `~/.pi/agent/keybindings.json`:
+
+```json
+{
+  "tui.select.down": ["down", "ctrl+n"],
+  "tui.select.up": ["up", "ctrl+p"]
+}
+```
+
+This extension does it for you instead: it appends the keys to the shared `tui.select.*` keybinding definitions rather than to the user bindings, so they also survive `/reload` and apply to selectors that construct their own keybinding manager (like the session picker). An explicit `tui.select.*` entry in `keybindings.json` still takes precedence.
