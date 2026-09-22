@@ -1,5 +1,33 @@
 # Pi Extensions
 
+A [Pi](https://pi.dev) package with two extensions. Both load automatically once the package is installed — no files to copy.
+
+## Installation
+
+```bash
+pi install git:github.com/Laischor/pi_extensions
+```
+
+Then run `/reload` (or restart `pi`). Check with `pi list`.
+
+To work on the extensions locally:
+
+```bash
+pi install ./pi_extensions
+```
+
+## Package Layout
+
+```
+pi_extensions/
+├── package.json          # pi manifest (extensions/)
+├── extensions/
+│   ├── remember-last-model.ts
+│   └── model-specific-context.ts
+├── README.md
+└── LICENSE
+```
+
 ## remember-last-model
 
 This extension remembers the last selected model across `/new` commands and fresh `pi` launches.
@@ -16,10 +44,6 @@ This extension:
 - Automatically restores the last model on:
   - `/new` command
   - Fresh `pi` startup (if no user messages exist)
-
-### Installation
-
-Copy `remember-last-model.ts` to `~/.pi/agent/extensions/`.
 
 ### Events
 
@@ -59,10 +83,6 @@ You are working with Claude Sonnet 4. Always:
 - Prefer concise code examples
 - Ask clarifying questions before implementing large changes
 ```
-
-### Installation
-
-Copy `model-specific-context.ts` to `~/.pi/agent/extensions/`.
 
 ### Events
 

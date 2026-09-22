@@ -1,0 +1,17 @@
+{
+	"name": "pi_extensions",
+	"version": "1.0.0",
+	"description": "Pi extensions: remember the last selected model and inject model-specific context files.",
+	"keywords": [
+		"pi-package"
+	],
+	"license": "MIT",
+	"pi": {
+		"extensions": [
+			"./extensions"
+		]
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*"
+	}
+}
